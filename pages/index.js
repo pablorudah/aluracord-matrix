@@ -172,7 +172,7 @@ export default function PaginaInicial() {
                 borderRadius: "50%",
                 marginBottom: "16px",
               }}
-              src={`https://github.com/${username}.png`}
+              src={`https://github.com/pablorudah.png`}
             />
             <Text
               variant="body4"
@@ -187,15 +187,7 @@ export default function PaginaInicial() {
             </Text>
           </Box>
           {/* Photo Area */}
-        </Box>
-        <Box styleSheet={{
-            color: appConfig.theme.colors.neutrals[200],
-            backgroundColor: appConfig.theme.colors.neutrals[900],
-            padding: '10px',
-            borderRadius: '1000px'  
-            }}>
-            <a href="https://github.com/pablorudah" class="github-link"></a>
-        </Box>
+        </Box>        
       </Box>
     </>
   );
