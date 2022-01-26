@@ -169,7 +169,7 @@ export default function PaginaInicial() {
                 borderRadius: "50%",
                 marginBottom: "16px",
               }}
-              src={username.length > 2 ? `https://github.com/${username}.png` : `https://icon-icons.com/pt/icone/bomba/61515`}
+              src={username.length > 2 ? `https://github.com/${username}.png` : `https://github.com/pablorudah.png`}
             />
             <Text
               variant="body4"
