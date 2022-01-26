@@ -1,36 +1,7 @@
 import { Box, Button, Text, TextField, Image } from "@skynexui/components";
+import React from 'react';
+import { useRouter } from 'next/router';
 import appConfig from "../config.json";
-
-function GlobalStyle() {
-  return (
-    <style global jsx>{`
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        list-style: none;
-      }
-      body {
-        font-family: "Open Sans", sans-serif;
-      }
-      /* App fit Height */
-      html,
-      body,
-      #__next {
-        min-height: 100vh;
-        display: flex;
-        flex: 1;
-      }
-      #__next {
-        flex: 1;
-      }
-      #__next > * {
-        flex: 1;
-      }
-      /* ./App fit Height */
-    `}</style>
-  );
-}
 
 function Titulo(props) {
   console.log(props.children);
@@ -66,11 +37,12 @@ function Titulo(props) {
 //export default HomePage
 
 export default function PaginaInicial() {
-  const username = "Pablo Ribeiro";
+  // const username = "pablorudah";
+  const [username, setUsername] = React.useState('user');
+  const roteamento = useRouter();
 
   return (
     <>
-      <GlobalStyle />
       <Box
         styleSheet={{
           display: "flex",
@@ -78,7 +50,7 @@ export default function PaginaInicial() {
           justifyContent: "center",
           backgroundColor: appConfig.theme.colors.primary[500],
           backgroundImage:
-            "url(https://virtualbackgrounds.site/wp-content/uploads/2020/08/the-matrix-digital-rain.jpg)",
+            "url(https://wallpaperbat.com/down/590102-raindrops-wallpaper-top-free-raindrops-background)",
           backgroundRepeat: "no-repeat",
           backgroundSize: "cover",
           backgroundBlendMode: "multiply",
@@ -105,6 +77,11 @@ export default function PaginaInicial() {
           {/* Formulário */}
           <Box
             as="form"
+            onSubmit={function (infosDoEvento) {
+                infosDoEvento.preventDefault();
+                console.log("Alguem submeteu o form.");
+                roteamento.push('/chat');
+            }}
             styleSheet={{
               display: "flex",
               flexDirection: "column",
@@ -126,7 +103,27 @@ export default function PaginaInicial() {
               {appConfig.name}
             </Text>
 
+            {/*<input 
+              type="text"
+              value={username}
+              onChange={function (event) {
+                  console.log('usuario digitou', event.target.value);
+                  //onde está o valor
+                  const valor = event.target.value;
+                  //Troca o valor da variável
+                  setUsername(valor);
+              }}              
+            />*/}
+
             <TextField
+              value={username}
+              onChange={function (event) {
+                console.log('usuario digitou', event.target.value);
+                //onde está o valor
+                const valor = event.target.value;
+                //Troca o valor da variável
+                setUsername(valor);
+              }} 
               fullWidth
               textFieldColors={{
                 neutral: {
@@ -136,7 +133,7 @@ export default function PaginaInicial() {
                   backgroundColor: appConfig.theme.colors.neutrals[800],
                 },
               }}
-            />
+            /> 
             <Button
               type="submit"
               label="Entrar"
@@ -172,7 +169,7 @@ export default function PaginaInicial() {
                 borderRadius: "50%",
                 marginBottom: "16px",
               }}
-              src={`https://github.com/pablorudah.png`}
+              src={username.length > 2 ? `https://github.com/${username}.png` : `https://icon-icons.com/pt/icone/bomba/61515`}
             />
             <Text
               variant="body4"
