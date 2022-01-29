@@ -37,8 +37,7 @@ function Titulo(props) {
 //export default HomePage
 
 export default function PaginaInicial() {
-  // const username = "pablorudah";
-  const [username, setUsername] = React.useState('user');
+  const [username, setUsername] = React.useState('pablorudah');
   const roteamento = useRouter();
 
   return (
@@ -80,7 +79,7 @@ export default function PaginaInicial() {
             onSubmit={function (infosDoEvento) {
                 infosDoEvento.preventDefault();
                 console.log("Alguem submeteu o form.");
-                roteamento.push('/chat');
+                roteamento.push(`/chat?username=${username}`);
             }}
             styleSheet={{
               display: "flex",
@@ -102,19 +101,6 @@ export default function PaginaInicial() {
             >
               {appConfig.name}
             </Text>
-
-            {/*<input 
-              type="text"
-              value={username}
-              onChange={function (event) {
-                  console.log('usuario digitou', event.target.value);
-                  //onde está o valor
-                  const valor = event.target.value;
-                  //Troca o valor da variável
-                  setUsername(valor);
-              }}              
-            />*/}
-
             <TextField
               value={username}
               onChange={function (event) {
